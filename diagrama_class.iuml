@@ -1,0 +1,95 @@
+@startuml
+left to right direction
+
+class Gerente {
+    - id
+    - nome
+    - CPF
+    - email
+    - telefone
+    - login
+    - senha
+    - salario 
+    - List<Funcionario> funcionarios
+    - relatorio: Relatorio
+    + login()
+    + logout()
+    + cadastrarFuncionario()
+    + editarFuncionario()
+    + removerFuncionario()
+    + criarCard()
+    + editarCard()
+    + removerCard()
+    + gerarRelatorio()
+    + visualizarRelatorio()
+}
+
+class Funcionario {
+    - id
+    - nome
+    - CPF
+    - email
+    - telefone
+    - login
+    - senha
+    - salario 
+    - cards: Card
+    + login()
+    + logout()
+    + visualizarCard()
+    + iniciarCard()
+    + concluirCard()
+    + pausarCard()
+}
+
+class Card {
+    - id
+    - titulo
+    - descricao
+    - dataCriacao
+    - dataConclusao
+    - tags: Tag
+    - status: Status
+    - gerente: Gerente 
+    + iniciar()
+    + concluir()
+    + pausar()
+    + adicionarTag()
+    + removerTag()
+    + atualizarStatus()
+}
+
+class Tag {
+    - id
+    - nome
+    + criarTag()
+    + editarTag()
+    + removerTag()
+}
+
+class Status {
+    - id
+    - status
+    + criarStatus()
+    + editarStatus()
+    + removerStatus()
+}
+
+class Relatorio {
+    - id
+    - titulo
+    - dataGeracao
+    + gerar()
+    + filtrarPorFuncionario()
+    + filtrarPorPeriodo()
+    + filtrarPorTag()
+    + calcularDesempenho()
+}
+
+Gerente "1" -- "0..*" Funcionario : gerencia >
+Funcionario "1" *-- "0..*" Card : possui >
+Card "0..*" -- "0..*" Tag : possui >
+Card "1" -- "1" Status : possui >
+Gerente "1" -- "0..*" Card : cria >
+Gerente "1" -- "0..*" Relatorio : gera >
+@endum
