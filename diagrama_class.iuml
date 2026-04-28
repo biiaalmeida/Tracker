@@ -1,7 +1,7 @@
 @startuml
 left to right direction
 
-class Gerente {
+class Usuario {
     - id
     - nome
     - CPF
@@ -9,37 +9,28 @@ class Gerente {
     - telefone
     - login
     - senha
-    - salario 
-    - List<Funcionario> funcionarios
-    - relatorio: Relatorio
+    - salario
     + login()
     + logout()
-    + cadastrarFuncionario()
-    + editarFuncionario()
-    + removerFuncionario()
-    + criarCard()
-    + editarCard()
-    + removerCard()
-    + gerarRelatorio()
-    + visualizarRelatorio()
+}
+
+class Gerente { 
+    - setorResponsavel
+    
+    + cadastrarGerente()
+    + editarDadosPessoais()
+    + removerGerente()
+    + verDadosGerente()
 }
 
 class Funcionario {
-    - id
-    - nome
-    - CPF
-    - email
-    - telefone
-    - login
-    - senha
-    - salario 
-    - cards: Card
-    + login()
-    + logout()
-    + visualizarCard()
-    + iniciarCard()
-    + concluirCard()
-    + pausarCard()
+    - funcao
+    - cargaHoraria
+
+    + criarFuncionario()
+    + verDadosFuncionario()
+    + editarDadosFuncionario()
+    + removerFuncionario()
 }
 
 class Card {
@@ -50,13 +41,10 @@ class Card {
     - dataConclusao
     - tags: Tag
     - status: Status
-    - gerente: Gerente 
-    + iniciar()
-    + concluir()
-    + pausar()
-    + adicionarTag()
-    + removerTag()
-    + atualizarStatus()
+    - funcionario: Funcionario
+    + iniciarCard()
+    + concluirCard()
+    + pausarCard()
 }
 
 class Tag {
@@ -64,6 +52,7 @@ class Tag {
     - nome
     + criarTag()
     + editarTag()
+    + atribuirTag()
     + removerTag()
 }
 
@@ -71,6 +60,7 @@ class Status {
     - id
     - status
     + criarStatus()
+    + atualizarStatus()
     + editarStatus()
     + removerStatus()
 }
@@ -79,17 +69,18 @@ class Relatorio {
     - id
     - titulo
     - dataGeracao
+    - gerente: Gerente
     + gerar()
     + filtrarPorFuncionario()
     + filtrarPorPeriodo()
     + filtrarPorTag()
     + calcularDesempenho()
 }
-
+Usuario <|-- Gerente
+Usuario <|-- Funcionario
 Gerente "1" -- "0..*" Funcionario : gerencia >
 Funcionario "1" *-- "0..*" Card : possui >
 Card "0..*" -- "0..*" Tag : possui >
 Card "1" -- "1" Status : possui >
-Gerente "1" -- "0..*" Card : cria >
 Gerente "1" -- "0..*" Relatorio : gera >
 @endum
