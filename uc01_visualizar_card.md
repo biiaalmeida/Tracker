@@ -50,8 +50,8 @@ Alta
 
 ### 8. Regras de Negócio
 
-#### RN02 - Um funcionário pode possuir múltiplos cards.
-#### RN03 - Um card é possuído por apenas um funcionário.
+#### RN03 - Um funcionário pode possuir múltiplos cards.
+#### RN04 - Um card é possuído por apenas um funcionário.
 
 -------------------------------------
 ### Histórico
