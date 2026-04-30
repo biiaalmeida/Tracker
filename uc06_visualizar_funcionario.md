@@ -48,3 +48,8 @@ Média
 
 #### RN01 - Um gerente pode gerenciar múltiplos funcionários.
 #### RN02 - Um funcionário é gerenciado por apenas um gerente.
+
+-------------------------------------
+### Histórico
+
+- Data: 30/04/2026 - Versão Inicial - Responsável: Letícia Morais
