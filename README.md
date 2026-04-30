@@ -35,7 +35,7 @@ Repositório destinado ao desenvolvimento do projeto Tracker, uma aplicação de
         <img src="https://avatars.githubusercontent.com/u/143243497?v=4" 
         width="120" alt="Foto de Rubens Alexandre no GitHub"/><br>
         <sub>
-          <b>Rubens Alexandre</b>
+          <b>Rubens Alexandre de Sousa Ferreira</b>
          </sub>
       </a>
     </td>
